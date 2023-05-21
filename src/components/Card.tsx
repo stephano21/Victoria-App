@@ -29,9 +29,15 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     height: 130,
+    width: 400,
+    backgroundColor:"#92F072",
+    alignContent:'center',
+    padding:2,
+    margin:3,
+    borderRadius: 15,
   },
   spacing: {
-    flex: 1,
+    flex: 2,
     padding: 5,
   },
   bgStyles: {
@@ -43,8 +49,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 10,
     top: 10,
-    color: "#fff",
+    color: "#000",
     fontSize: 11,
+    textAlign: "center",
   },
   name: {
     color: "#fff",
