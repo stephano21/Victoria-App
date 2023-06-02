@@ -1,12 +1,32 @@
 import react, { useState } from "react";
 import { View, TextInput, StyleSheet, TouchableOpacity, Text } from "react-native";
-import { LoginScreenProps } from './../../../types';
-import { Colors} from './../Colors'
+import { LoginScreenProps } from '../../../types';
+import { Colors} from '../Colors'
 const LoginForm = ({ navigation }: LoginScreenProps ): JSX.Element=> {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [user, setUser] = useState('');
+    const [cedula, setCedula] = useState('');
     return (
         <View style={styles.container}>
+            <TextInput
+                style={styles.input}
+                placeholder="Correo"
+                placeholderTextColor={Colors.warning}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Cédula"
+                placeholderTextColor={Colors.warning}
+                keyboardType="numeric"
+                maxLength={10} 
+                value={cedula}
+                onChangeText={(text) => setCedula(text)}
+            />
             <TextInput
                 style={styles.input}
                 placeholder="Ususario"
@@ -22,11 +42,11 @@ const LoginForm = ({ navigation }: LoginScreenProps ): JSX.Element=> {
                 secureTextEntry={true}
                 onChangeText={(text) => setPassword(text)}
             />
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Inicio')} >
-                <Text style={styles.buttonText}>Iniciar Sesión</Text>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')} >
+                <Text style={styles.buttonText}>Registrarse</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-                <Text style={styles.link}>Registrarse</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                <Text style={styles.link}>Ya tiene una cuenta? Iniciar sesión</Text>
             </TouchableOpacity>
         </View>
     )

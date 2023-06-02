@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet,TouchableWithoutFeedback } from 'react-native';
-
+import { Dimensions, View, Text, Image, StyleSheet, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { Colors } from './../components/Colors'
+const screenWidth = Dimensions.get('window').width;
 interface CardProps {
   title: string;
   image: string;
@@ -9,16 +10,12 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ title, image, description }) => {
   return (
-    <TouchableWithoutFeedback >
-      <View style={styles.card}>
-        <View style={styles.spacing}>
-          <View >
-            <Text style={styles.number} >{title}
-             
-            </Text>
-            <Text style={styles.name}>{description}</Text>
-            <Image source={{ uri: "https://placehold.co/150x150" }} style={styles.image} />
-          </View>
+    <TouchableWithoutFeedback>
+      <View style={styles.cardContainer}>
+        <View style={styles.card}>
+          <Text style={styles.number}>{title}</Text>
+          <Text style={styles.name}>{description}</Text>
+          <Image source={{ uri: image }} style={styles.image} />
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -26,46 +23,34 @@ const Card: React.FC<CardProps> = ({ title, image, description }) => {
 };
 
 const styles = StyleSheet.create({
+  cardContainer: {
+    width: '50%',
+    paddingHorizontal: 8,
+    marginBottom: 16,
+  },
   card: {
-    flex: 1,
-    height: 130,
-    width: 400,
-    backgroundColor:"#92F072",
-    alignContent:'center',
-    padding:2,
-    margin:3,
-    borderRadius: 15,
-  },
-  spacing: {
-    flex: 2,
-    padding: 5,
-  },
-  bgStyles: {
-    flex: 1,
-    borderRadius: 15,
-    padding: 10,
+    backgroundColor: Colors.background,
+    borderRadius: 8,
+    padding: 16,
+    elevation: 4,
+    
   },
   number: {
-    position: "absolute",
-    right: 10,
-    top: 10,
-    color: "#000",
-    fontSize: 11,
-    textAlign: "center",
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 8,
   },
   name: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 15,
-    paddingTop: 10,
+    fontSize: 14,
+    marginBottom: 8,
   },
   image: {
-    position: "absolute",
-    bottom: 2,
-    right: 2,
-    width: 90,
-    height: 90,
+    width: '100%',
+    height: 150,
+    resizeMode: 'cover',
+    borderRadius: 8,
   },
+  
 });
 
 
