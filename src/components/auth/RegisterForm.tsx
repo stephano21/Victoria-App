@@ -1,7 +1,7 @@
 import react, { useState } from "react";
 import { View, TextInput, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { LoginScreenProps } from '../../../types';
-import { Colors} from '../Colors'
+import { Colors} from '../../static/Colors'
 const LoginForm = ({ navigation }: LoginScreenProps ): JSX.Element=> {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -31,8 +31,8 @@ const LoginForm = ({ navigation }: LoginScreenProps ): JSX.Element=> {
                 style={styles.input}
                 placeholder="Ususario"
                 placeholderTextColor={Colors.warning}
-                value={email}
-                onChangeText={(text) => setEmail(text)}
+                value={user}
+                onChangeText={(text) => setUser(text)}
             />
             <TextInput
                 style={styles.input}

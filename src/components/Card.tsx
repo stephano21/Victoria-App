@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dimensions, View, Text, Image, StyleSheet, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
-import { Colors } from './../components/Colors'
+import { Colors } from './../static/Colors'
 const screenWidth = Dimensions.get('window').width;
 interface CardProps {
   title: string;

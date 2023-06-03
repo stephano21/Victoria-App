@@ -3,7 +3,7 @@ import LoginScreen from './../screens/LoginScreen'
 import RegisterScreen from './../screens/RegisterScreen'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
-import { Colors } from './../components/Colors'
+import { Colors } from './../static/Colors'
 const Stack = createStackNavigator()
 
 export default function MyStack (){

@@ -1,23 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ScrollView, View, Text, Dimensions,StyleSheet } from "react-native";
+import { getProyectosApi } from "../api/hacienda";
 //components
 import Card from '../components/Card';
 
 const screenWidth = Dimensions.get('window').width;
-const cards = [
-    { title: 'Card 1', description: 'Description 1', image: 'https://placehold.co/150x150' },
-    { title: 'Card 2', description: 'Description 2', image: 'https://placehold.co/150x150' },
-    { title: 'Card 3', description: 'Description 3', image: 'https://placehold.co/150x150' },
-    { title: 'Card 4', description: 'Description 4', image: 'https://placehold.co/150x150' },
-  ];
+
+  interface CardData {
+  id:              number;
+  Codigo_Proyecto: string;
+  Nombre:          string;
+  Id_Hacienda:     number;
+}
 const HomeScreen = () => {
+  const [nextUrl, setNextUrl] = useState(null);
+  const [proyectos, setProjects] = useState<CardData[]>([]);
+
+  const loadProyectos = async () => {
+    try {
+      const response = await getProyectosApi(nextUrl)// Espera la respuesta de la API
+      // proyectos es un arreglo de objetos con los datos que necesitas
+
+      // Actualiza el estado con los datos recibidos
+      setProjects(response);
+      
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    (async () => {
+      await loadProyectos();
+    })();
+  }, []);
     return (
         <ScrollView>
             <View style={styles.row}>
-        {cards.map((card, index) => (
-          <Card key={index} title={card.title} description={card.description} image={card.image} />
-        ))}
-      </View>
+              {proyectos.map((card, index) => (
+              <Card key={index} title={card.Codigo_Proyecto} description={card.Nombre} image={card.id.toString()} />
+              ))}
+            </View>
         </ScrollView>
     )
 
