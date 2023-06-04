@@ -1,0 +1,1 @@
+# This a simple App on react native using Tyscrip for best Pactics
