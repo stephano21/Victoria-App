@@ -1,8 +1,8 @@
 import react, { useState } from "react";
 import { View, TextInput, StyleSheet, TouchableOpacity, Text } from "react-native";
-import { LoginScreenProps } from '../../../types';
+import { NavigationProps } from '../../../types';
 import { Colors} from '../../static/Colors'
-const LoginForm = ({ navigation }: LoginScreenProps ): JSX.Element=> {
+const LoginForm = ({ navigation }: NavigationProps ): JSX.Element=> {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState('');

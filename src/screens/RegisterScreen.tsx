@@ -1,9 +1,9 @@
-import { LoginScreenProps} from './../../types';
+import { NavigationProps} from './../../types';
 //Components
 import RegisterForm from './../components/auth/RegisterForm'
 
 
-const LoginScreen = ({ navigation }: LoginScreenProps) => {
+const LoginScreen = ({ navigation }: NavigationProps) => {
     return (
         <RegisterForm navigation={navigation}/>
     )
