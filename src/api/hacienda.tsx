@@ -5,6 +5,8 @@ export async function getProyectosApi(endpointUrl:string| null) {
       const url = `${API_HOST}/proyectos`;
       const response = await fetch(endpointUrl || url);
       const result = await response.json();
+      // Espera 2 segundos antes de retornar el resultado
+      await new Promise((resolve) => setTimeout(resolve, 5000));
       return result;
     } catch (error) {
       throw error;
@@ -13,9 +15,9 @@ export async function getProyectosApi(endpointUrl:string| null) {
   
 export async function getLotesApi(id:number | null) {
   try {
-    /* var url :string=`${API_HOST}/lotes`;
-    if (id != null) url += `/`+id; */
-    const url =`${API_HOST}/lotes`;
+    var url: string =`${API_HOST}/lotes`;
+    if (id != null) url += `/`+id; 
+    //const url =`${API_HOST}/lotes`;
     
     
     const response = await fetch(url);
